@@ -1,0 +1,14 @@
+{
+    "name": "vinnia/newsletter-signup",
+    "description": "A plugin for signing up to mailchimp",
+    "type": "wordpress-plugin",
+    "authors": [
+        {
+            "name": "Joakim Carlsten",
+            "email": "joakim@vinnia.se"
+        }
+    ],
+    "require": {
+        "drewm/mailchimp-api": "^2.2"
+    }
+}
