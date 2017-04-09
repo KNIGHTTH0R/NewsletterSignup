@@ -23,7 +23,7 @@ jQuery(document).ready(function($){
 
     function handleSubscription (e) {
         e.preventDefault();
-        var $el = $(event.target);
+        var $el = $(e.target);
         $el.blur();
         $el.append($loader);
         $el.off('click', handleSubscription);
@@ -47,7 +47,7 @@ jQuery(document).ready(function($){
                 dataType: 'json',
                 data: {
                     action: 'subscriberSubmit',
-                    email: $newsletterEmail.val(),
+                    email: $newsletterEmail.val()
                 }
             }).done(function (result) {
                 $(result.modal).modal();

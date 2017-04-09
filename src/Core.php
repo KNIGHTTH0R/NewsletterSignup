@@ -96,7 +96,6 @@ class Core
         $result = $this->mailchimpClient->post("lists/$this->subscriptionId/members", array(
             'email_address' => $_POST['email'],
             'status' => 'subscribed',
-            //'merge_vars' => array(),
             'merge_fields' => ['FNAME'=>'First name', 'LNAME'=>'Last name'],
             'double_optin' => false,
             'update_existing' => true,
