@@ -44,7 +44,7 @@ function newsletterSignupInit() {
     $mailchimpApiKey = $options['mailchimp_api_key'] ?? '';
     $newsletterSubscriptionListId = $options['newsletterSubscriptionListId'] ?? '';
     if (!empty($mailchimpApiKey) && !empty($newsletterSubscriptionListId)) {
-        $mailchimpClient = new NewsletterSignup\Vendor\MailChimp\MailChimp($mailchimpApiKey);
+        $mailchimpClient = new DrewM\MailChimp\MailChimp($mailchimpApiKey);
         $plugin['core_logic'] = new Core($plugin['url'], $mailchimpClient, $newsletterSubscriptionListId);
         $plugin['frontend_form'] = new Frontend();
     }

@@ -9,7 +9,7 @@
 
 namespace NewsletterSignup\Admin;
 
-use NewsletterSignup\Vendor\MailChimp\MailChimp;
+use DrewM\MailChimp\MailChimp;
 
 class SettingsPage extends AbstractSettingsPage
 {
