@@ -67,12 +67,12 @@ class Core
             true
         );
 
-        wp_enqueue_script('bootstrap-modal',
+        /*wp_enqueue_script('bootstrap-modal',
             $this->pluginUrl.'src/assets/vendor/bootstrap/js/modal.min.js',
             ['jquery'],
             false,
             true
-        );
+        );*/
 
         $localize_array = [
             'ajax_url' => admin_url('admin-ajax.php'),
@@ -83,10 +83,10 @@ class Core
             $localize_array
         );
 
-        wp_enqueue_style(
+        /*wp_enqueue_style(
             'newsletter-style',
             $this->pluginUrl.'src/assets/css/modals.min.css'
-        );
+        );*/
     }
 
     private function subscribeRequest()
