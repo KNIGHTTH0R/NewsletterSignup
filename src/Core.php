@@ -9,7 +9,7 @@
 namespace NewsletterSignup;
 
 
-use NewsletterSignup\Vendor\MailChimp\MailChimp;
+use DrewM\MailChimp\MailChimp;
 
 class Core
 {
