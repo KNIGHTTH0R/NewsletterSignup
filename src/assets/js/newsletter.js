@@ -58,7 +58,7 @@ jQuery(document).ready(function($){
         $subscribeButton.off('click', noop);
         $subscribeButton.on('click', handleSubscription);
         $el.find($loader).remove();
-
+        $newsletterEmail.val("");
     }
 
 });
