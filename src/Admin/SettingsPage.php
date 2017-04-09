@@ -27,7 +27,7 @@ class SettingsPage extends AbstractSettingsPage
                 $MailChimp = new MailChimp($settings_data['mailchimp_api_key']);
                 $lists = $MailChimp->get('lists');
             } catch (\Exception $e) {
-                $error = 'Invalid Mailchimp API key provided';
+                $error = $e->getMessage();
             }
         }
 
