@@ -104,8 +104,8 @@ class Core
         ));
 
         if ($this->mailchimpClient->success()) {
-            $modal_title = __('Cheers! <br/>Thanks for your subscribtion', 'newsletter_plugin');
-            $modal_content = __('One day - not long from now - you will receive your first newsletter from us', 'newsletter_plugin');
+            $modal_title = __('Cheers!', 'newsletter_plugin');
+            $modal_content = __('You have now signed up to receive the newsletter', 'newsletter_plugin');
         } else {
             $modal_title = __('Ooops! <br/>Something went wrong', 'newsletter_plugin');
             $modal_content = sprintf(
