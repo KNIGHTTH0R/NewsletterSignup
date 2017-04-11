@@ -51,14 +51,14 @@ jQuery(document).ready(function($){
                 }
             }).done(function (result) {
                 $(result.modal).modal();
+                //re-enable event handlers
+                $subscribeButton.off('click', noop);
+                $subscribeButton.on('click', handleSubscription);
+                $el.find($loader).remove();
+                $newsletterEmail.val("");
             });
         }
 
-        //re-enable event handlers
-        $subscribeButton.off('click', noop);
-        $subscribeButton.on('click', handleSubscription);
-        $el.find($loader).remove();
-        $newsletterEmail.val("");
     }
 
 });
