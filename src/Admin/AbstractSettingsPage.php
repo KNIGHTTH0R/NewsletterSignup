@@ -54,7 +54,7 @@ abstract class AbstractSettingsPage
 
     public function get_settings_data()
     {
-        return get_option($this->settings_page_properties['option_name'], $this->get_default_settings_data());
+        return wp_parse_args(get_option($this->settings_page_properties['option_name'], $this->get_default_settings_data()), $this->get_default_settings_data());
     }
 
     public function render_settings_page()

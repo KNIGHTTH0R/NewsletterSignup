@@ -71,6 +71,45 @@ class SettingsPage extends AbstractSettingsPage
                     </select>
                 <p>
                     <?php endif; ?>
+                <hr>
+
+                <p>
+                    <label>Title for subscription succeeded</label><br>
+                    <input
+                            type="text"
+                            size="50"
+                            name="<?php echo esc_attr($option_name . "[mailchimp_success_title]"); ?>"
+                            value="<?php echo esc_attr($settings_data['mailchimp_success_title']); ?>"
+                    >
+                </p>
+
+                <p>
+                    <label>Message for subscription succeeded</label><br>
+                    <textarea
+                            name="<?php echo esc_attr($option_name . "[mailchimp_success_message]"); ?>"
+                            cols="60"
+                            rows="5"><?= esc_attr($settings_data['mailchimp_success_message']); ?>
+                    </textarea>
+                </p>
+
+                <p>
+                    <label>Title for subscription failed</label><br>
+                    <input
+                            type="text"
+                            size="50"
+                            name="<?php echo esc_attr($option_name . "[mailchimp_failed_title]"); ?>"
+                            value="<?php echo esc_attr($settings_data['mailchimp_failed_title']); ?>"
+                    >
+                </p>
+
+                <p>
+                    <label>Message for subscription failed</label><br>
+                    <textarea
+                            name="<?php echo esc_attr($option_name . "[mailchimp_failed_message]"); ?>"
+                            cols="60"
+                            rows="5"><?= esc_attr($settings_data['mailchimp_failed_message']); ?>
+                    </textarea>
+                </p>
 
 
                 <hr>
@@ -82,7 +121,13 @@ class SettingsPage extends AbstractSettingsPage
 
     public function get_default_settings_data()
     {
-        $defaults = array();
+        $defaults = [
+            'mailchimp_api_key' => '',
+            'mailchimp_success_title' => 'Cheers!',
+            'mailchimp_success_message' => 'You have now signed up to receive the newsletter',
+            'mailchimp_failed_title' => 'Ooops! Something went wrong',
+            'mailchimp_failed_message' => 'Please contact us via mail. Last error was: %s'
+        ];
 
 
         return $defaults;

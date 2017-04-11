@@ -17,6 +17,7 @@ use NewsletterSignup\Core;
 use NewsletterSignup\Frontend;
 use NewsletterSignup\Plugin;
 use NewsletterSignup\Admin\SettingsPage;
+use NewsletterSignup\Settings;
 
 define('NEWSLETTER_BASE_CLASS_NAME', 'NewsletterSignup');
 
@@ -31,7 +32,7 @@ function newsletterSignupInit() {
     $plugin['path'] = realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR;
     $plugin['url'] = plugin_dir_url( __FILE__ );
     $plugin['version'] = '0.1';
-    $plugin['settings_page_properties'] = array(
+    $plugin['settings_properties'] = array(
         'parent_slug' => 'options-general.php',
         'page_title' =>  'Mailchimp',
         'menu_title' =>  'Mailchimp',
@@ -40,15 +41,23 @@ function newsletterSignupInit() {
         'option_group' => 'mailchimp_option_group',
         'option_name' => 'mailchimp_option_name'
     );
-    $options = get_option('mailchimp_option_name');
+
+    $plugin['settings'] = new Settings( $plugin['settings_properties']);
+
+    $options = $plugin['settings']->getData();
     $mailchimpApiKey = $options['mailchimp_api_key'] ?? '';
     $newsletterSubscriptionListId = $options['newsletterSubscriptionListId'] ?? '';
     if (!empty($mailchimpApiKey) && !empty($newsletterSubscriptionListId)) {
         $mailchimpClient = new DrewM\MailChimp\MailChimp($mailchimpApiKey);
-        $plugin['core_logic'] = new Core($plugin['url'], $mailchimpClient, $newsletterSubscriptionListId);
+        $plugin['core_logic'] = new Core(
+            $plugin['url'],
+            $mailchimpClient,
+            $newsletterSubscriptionListId,
+            $plugin['settings']
+        );
         $plugin['frontend_form'] = new Frontend();
     }
-    $plugin['settings_page'] = new SettingsPage( $plugin['settings_page_properties'] );
+    $plugin['settings_page'] = new SettingsPage( $plugin['settings']->getSettingsPageProperties() );
     $plugin->run();
 }
 

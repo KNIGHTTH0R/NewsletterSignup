@@ -20,17 +20,22 @@ class Core
     private $mailchimpClient;
 
     private $subscriptionId;
+    /**
+     * @var Settings
+     */
+    private $settings;
 
 
     /**
      * Core constructor.
      */
-    public function __construct($pluginUrl, MailChimp $mailchimpClient, $subscriptionId)
+    public function __construct($pluginUrl, MailChimp $mailchimpClient, $subscriptionId, Settings $settings)
     {
 
         $this->pluginUrl = $pluginUrl;
         $this->mailchimpClient = $mailchimpClient;
         $this->subscriptionId = $subscriptionId;
+        $this->settings = $settings;
     }
 
     public function run()
@@ -104,12 +109,12 @@ class Core
         ));
 
         if ($this->mailchimpClient->success()) {
-            $modal_title = __('Cheers!', 'newsletter_plugin');
-            $modal_content = __('You have now signed up to receive the newsletter', 'newsletter_plugin');
+            $modal_title = $this->settings->getSuccessTitle();
+            $modal_content = $this->settings->getSuccessMessage();
         } else {
-            $modal_title = __('Ooops! <br/>Something went wrong', 'newsletter_plugin');
+            $modal_title = $this->settings->getFailedTitle();
             $modal_content = sprintf(
-                __('Please contact us via mail. Last error was: %s', 'newsletter_plugin'),
+                $this->settings->getFailedMessage(),
                 $this->mailchimpClient->getLastError()
             );
         }
