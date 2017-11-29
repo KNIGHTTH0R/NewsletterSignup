@@ -40,6 +40,9 @@ jQuery(document).ready(function($){
             $newsletterEmail.parent().addClass('has-warning');
             $newsletterEmail.after('<span class="help-block">' + ajax_object.supply_email+ '</span>');
             $el.find($loader).remove();
+            //re-enable event handlers
+            $subscribeButton.off('click', noop);
+            $subscribeButton.on('click', handleSubscription);
         } else {
             $.ajax( {
                 method: 'post',
