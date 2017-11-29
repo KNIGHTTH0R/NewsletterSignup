@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
         if (0 === $newsletterEmail.val().length || !regex.test($newsletterEmail.val())) {
             $newsletterEmail.parent().addClass('has-warning');
             $newsletterEmail.after('<span class="help-block">' + ajax_object.supply_email+ '</span>');
-
+            $el.find($loader).remove();
         } else {
             $.ajax( {
                 method: 'post',
