@@ -1,5 +1,5 @@
 {
-    "name": "vinnia/newsletter-signup",
+    "name": "vinnia/vinnia-newsletter-signup",
     "description": "A plugin for signing up to mailchimp",
     "type": "wordpress-plugin",
     "authors": [
